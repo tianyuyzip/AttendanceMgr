@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="attApp">
+<head>
+    <meta charset="UTF-8">
+    <title>考勤管理系统</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="node_modules/prefixfree.min.js"></script>
+
+    <script src="app/appModule.js"></script>
+    <script src="app/appController.js"></script>
+    <script src="ext-modules/login/loginModule.js"></script>
+    <script src="ext-modules/login/loginController.js"></script>
+    <script src="ext-modules/login/loginDirective.js"></script>
+    <script src="ext-modules/student/stuMain/stuMainModule.js"></script>
+    <script src="ext-modules/student/stuMain/stuMainController.js"></script>
+    <script src="ext-modules/student/stuMain/stuMainDirective.js"></script>
+
+    <script src="app/appRouteConfig.js"></script>
+    <link rel="stylesheet" href="ext-modules/login/login.css">
+
+
+</head>
+<body ng-controller="attCtrl">
+    <div class="container-fluid">
+        <div ng-view></div>
+    </div>
+</body>
+</html>

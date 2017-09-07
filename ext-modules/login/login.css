@@ -1,0 +1,36 @@
+body {
+    background: url(../../images/bg.png);
+    background-size: 100% 100%;
+    margin:0;
+    padding:0;}
+.content {
+    width:600px;
+    height:350px;
+    margin:50px 600px 10px 350px;
+}
+.login-form {
+    width:400px;
+    height:300px;
+    margin:150px auto 0;
+    padding-top:73px;
+    position:relative;
+    background-image:-*-linear-gradient(top,rgb(255,255,255),rgb(242,242,242));
+    box-shadow:0 3px 3px rgba(21,62,78,0.8);
+}
+.login-form:before {
+    content:"";
+    position:absolute;
+    top:-50px;
+    left:150px;
+    width:102px;
+    height:102px;
+    padding:2px;
+    border:1px solid rgb(216,216,219);
+    background:#fff url("../../images/logo.jpg") no-repeat;
+    background-size: contain;
+}
+.login-error{
+    font-size: 18px;
+    color: red;
+    font-weight: bold;
+}

@@ -1,13 +1,20 @@
 <div>
-    <div>
-        <label>欢迎，
-            <span>{{user.stuname}}</span>
-        </label>
-        <button class="btn btn-primary" type="button">
-            历史签到 <span class="badge">4</span>
-        </button>
-        <a href="#">迟到: <span class="badge">42</span></a>
-        <a href="#">缺勤: <span class="badge">42</span></a>
+    <div class="col-sm-12 text-center">
+        <div class="col-sm-12 col-md-2 col-md-offset-2">
+            <label>欢迎，
+                <span>{{user.stuname}}</span>
+            </label>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <button class="btn btn-primary" type="button">
+                历史签到 <span class="badge">{{totlecnt}}</span>
+            </button>
+            <a href="#">正常签到: <span class="badge">{{normalcnt}}</span></a>
+            <a href="#">迟到: <span class="badge">{{latecnt}}</span></a>
+            <a href="#">缺勤: <span class="badge">{{absentcnt}}</span></a>
+        </div>
+        <div class="pull-right col-sm-12 col-md-2">
+            <button class="btn btn-primary" ng-click="quit();">退出登陆</button>
+        </div>
     </div>
-    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur consequuntur deserunt dolorum eius eveniet expedita fugiat fugit hic labore laborum minus nemo porro quasi quia recusandae reiciendis suscipit veniam, veritatis?</span>
 </div>

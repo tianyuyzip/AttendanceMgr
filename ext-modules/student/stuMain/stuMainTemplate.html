@@ -1,5 +1,6 @@
 <div>
-    <div class="col-sm-12 text-center">
+    <div class="text-center">
+        <div class="stu-header">
         <div class="col-sm-12 col-md-2 col-md-offset-2">
             <label>欢迎，
                 <span>{{user.stuname}}</span>
@@ -13,8 +14,12 @@
             <a href="#">迟到: <span class="badge">{{latecnt}}</span></a>
             <a href="#">缺勤: <span class="badge">{{absentcnt}}</span></a>
         </div>
-        <div class="pull-right col-sm-12 col-md-2">
+        <div class=" col-sm-12 col-md-2">
             <button class="btn btn-primary" ng-click="quit();">退出登陆</button>
+        </div>
+        </div>
+        <div class="col-xs-12">
+            <stu-btn ng-repeat="course in courses"></stu-btn>
         </div>
     </div>
 </div>

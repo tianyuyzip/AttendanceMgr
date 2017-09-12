@@ -1,0 +1,13 @@
+.part-line{
+    border:3px;
+    z-index: 1000;
+}
+
+.stu-header{
+    margin-top: 8px;
+    background-color: aliceblue;
+}
+
+.record-btn{
+    margin-top: 30px;
+}

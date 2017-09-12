@@ -1,7 +1,7 @@
 "use strict"
 
 angular.module("stuMain")
-    .directive("stuMain",["$rootScope",function ($rootScope) {
+    .directive("stuMain",function () {
        return {
            restrict:"AE",
            scope:{},
@@ -9,4 +9,4 @@ angular.module("stuMain")
            replace:true,
            controller:"stuMainCtrl"
        }
-    }]);
+    });

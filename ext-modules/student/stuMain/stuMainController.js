@@ -5,16 +5,20 @@ angular.module("stuMain")
         function ($scope,$rootScope,$location,$window,$http) {
         //检查是否登陆，否则跳转到登陆界面
         (function () {
-            console.log($rootScope.user);
+            // console.log($rootScope.user);
             if(!$rootScope.user){
                 $location.path("/login");
             }else{
                 loadAllAttHistory($rootScope.user.stuno);
+                loadTodayCourses();
             }
         })();
         //登陆的用户
         $scope.user = $rootScope.user;
 
+        /*
+        * 加载历史签到次数信息
+        * */
         function loadAllAttHistory (stuno) {
             $http({
                 method:"GET",
@@ -29,7 +33,34 @@ angular.module("stuMain")
                 }
             )
         }
+        
+        /**
+         * 加载当天所有课程信息
+         * */
+        function loadTodayCourses () {
 
+                var date = new Date();
+                var month = String(date.getMonth()+1);
+                var day = String(date.getDate());
+                var md = month+"-"+day;          //月份 / 日
+
+                $http({
+                    method:"GET",
+                    url:"http://localhost/v1/stu/course/"+md
+                }).then(
+                    function (resp) {
+                        $scope.courses = resp.data.result;
+                    }
+                );
+        }
+
+        function setSignCnt() {
+            
+        }
+
+        /*
+        * 退出系统
+        * */
         $scope.quit = function () {
             if(!$rootScope.user)
                 return;

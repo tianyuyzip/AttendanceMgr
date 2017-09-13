@@ -1,5 +1,6 @@
 <div>
-    <button class="btn btn-lg btn-primary col-xs-10 col-xs-offset-1 record-btn">
+    <button class="btn btn-lg col-xs-10 col-xs-offset-1 record-btn"
+        ng-class="{'待签到': 'btn-primary', '已签到': 'btn-success','迟到':'btn-warning','缺勤':'btn-danger'}[signStatus]">
         <span>{{course.begintime}}</span>-<span>{{course.endtime}}</span><br>
         <p class="h3">{{course.coursename}}({{course.teaname}})</p>
         状态：{{signStatus}}

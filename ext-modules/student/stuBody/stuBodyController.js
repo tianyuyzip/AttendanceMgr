@@ -18,8 +18,18 @@ angular.module("stuMain")
                 method:"GET",
                 url:"http://localhost/v1/stu/signCnt/"+stuno+"/"+status
             }).then(function (resp) {
-                console.log(resp);
+                updateSignCntInTitle(resp.data.result[0]);
             })
+        }
+
+        function updateSignCntInTitle(info) {
+            console.log(info);
+            $scope.$parent.$applyAsync(function() {
+                $scope.$parent.absentcnt = info.absentcnt;
+                $scope.$parent.normalcnt = info.normalcnt;
+                $scope.$parent.latecnt = info.latecnt;
+                $scope.$parent.totlecnt = info.absentcnt+info.normalcnt+info.latecnt;
+            });
         }
 
     }]);

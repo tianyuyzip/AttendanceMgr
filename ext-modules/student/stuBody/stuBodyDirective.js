@@ -42,7 +42,22 @@ angular.module("stuMain")
                     if(scope.signStatus==="缺勤"){
                         var password = prompt("请输入签到密码：");
                         if(password===scope.course.password){
-                            console.log(scope.$parent);
+                            // console.log(scope.$parent);
+                            scope.updateSignCnt($rootScope.user.stuno,scope.signStatus);
+                            scope.signStatus = "已签到";
+                        }
+                    }
+                    if(scope.signStatus==="待签到"){
+                        var password = prompt("请输入签到密码：");
+                        if(password===scope.course.password){
+                            // console.log(scope.$parent);
+                            scope.updateSignCnt($rootScope.user.stuno,scope.signStatus);
+                        }
+                    }
+                    if(scope.signStatus==="迟到"){
+                        var password = prompt("请输入签到密码：");
+                        if(password===scope.course.password){
+                            // console.log(scope.$parent);
                             scope.updateSignCnt($rootScope.user.stuno,scope.signStatus);
                         }
                     }

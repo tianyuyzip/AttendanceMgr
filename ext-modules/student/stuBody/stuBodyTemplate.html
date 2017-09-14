@@ -3,6 +3,6 @@
         ng-class="{'待签到': 'btn-primary', '已签到': 'btn-success','迟到':'btn-warning','缺勤':'btn-danger'}[signStatus]">
         <span>{{course.begintime}}</span>-<span>{{course.endtime}}</span><br>
         <p class="h3">{{course.coursename}}({{course.teaname}})</p>
-        状态：{{signStatus}}
+        状态：{{signStatus}}{{signMark}}
     </button>
 </div>

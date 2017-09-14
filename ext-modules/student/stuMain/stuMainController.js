@@ -9,7 +9,7 @@ angular.module("stuMain")
             if(!$rootScope.user){
                 $location.path("/login");
             }else{
-                loadAllAttHistory($rootScope.user.stuno);
+                loadAllAttHistoryCnt($rootScope.user.stuno);
                 loadTodayCourses();
             }
         })();
@@ -19,7 +19,7 @@ angular.module("stuMain")
         /*
         * 加载历史签到次数信息
         * */
-        function loadAllAttHistory (stuno) {
+        function loadAllAttHistoryCnt (stuno) {
             $http({
                 method:"GET",
                 url:"http://localhost/v1/stu/signin/"+stuno
@@ -32,6 +32,17 @@ angular.module("stuMain")
                     $scope.totlecnt = record.normalcnt+record.latecnt+record.absentcnt;
                 }
             )
+        }
+
+        function loadAllUserHistory(stuno) {
+            $http({
+                method:"GET",
+                url:"http://localhost/v1/stu/signinfo/"+stuno
+            }).then(
+                function (resp) {
+                    console.log(resp.data.result);
+                }
+            );
         }
         
         /**
@@ -55,7 +66,7 @@ angular.module("stuMain")
         }
 
         function setSignCnt() {
-            
+
         }
 
         /*

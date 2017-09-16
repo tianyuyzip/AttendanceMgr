@@ -15,6 +15,12 @@ angular.module("attApp")
                    config:{
                        template:"<stu-main></stu-main>"
                    }
+               },
+               {
+                   url:"/stuSignedList",
+                   config:{
+                       template:"<stu-signed-list></stu-signed-list>"
+                   }
                }
            ];
 

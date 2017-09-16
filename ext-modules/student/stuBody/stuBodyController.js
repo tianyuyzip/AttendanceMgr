@@ -23,7 +23,7 @@ angular.module("stuMain")
         }
 
         function updateSignCntInTitle(info) {
-            // console.log(info);
+            // console.log($scope);
             $scope.$parent.$applyAsync(function() {
                 $scope.$parent.absentcnt = info.absentcnt;
                 $scope.$parent.normalcnt = info.normalcnt;
@@ -31,6 +31,7 @@ angular.module("stuMain")
                 $scope.$parent.totlecnt = info.absentcnt+info.normalcnt+info.latecnt;
             });
         }
+        // console.log($scope);
 
         $scope.addSigninfo = function(info) {
             $http({
@@ -56,20 +57,17 @@ angular.module("stuMain")
                     if(resp.data.result!=1) {
                             $scope.status = resp.data.result[0].status;
                             $scope.signtime = resp.data.result[0].signtime;
-                            console.log($scope);
 
                         if ($scope.status === 1) {
                             $scope.signStatus = "已签到";
                             $scope.signMark = "(正常)  签到时间 " + $scope.signtime;
-                            console.log(1);
                         }else if ($scope.status === 2) {
                             $scope.signStatus = "已签到";
                             $scope.signMark = "(迟到)  签到时间 " + $scope.signtime;
-                            console.log(2);
                         }
                     }
                 }
             )
-        }
+        };
 
     }]);

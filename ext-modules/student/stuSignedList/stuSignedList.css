@@ -1,0 +1,19 @@
+.title-left{
+    color: #216566;
+    height: auto;
+    width:100%;
+    font-size: 18px;
+    text-align: left;
+    margin-top: 5px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-area{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.table-area{
+    margin-top: 5px;
+}

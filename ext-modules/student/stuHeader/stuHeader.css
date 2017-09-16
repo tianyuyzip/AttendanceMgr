@@ -1,0 +1,23 @@
+.user-label{
+    font-family: 微软雅黑;
+    font-size: 16px;
+}
+.logo-icon{
+    display: inline-block;
+    width: 140px;
+    height: 50px;
+    margin-top: 5px;
+}
+
+.title-area{
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.sign-cnt{
+    margin-top: 5px;
+}
+
+.quit{
+    margin-top: 5px;
+}

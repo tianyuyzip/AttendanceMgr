@@ -1,8 +1,9 @@
-<div>
+<div ng-controller="stuMainCtrl">
     <div class="text-center">
         <stu-header></stu-header>
-        <div class="col-xs-12">
-            <stu-btn ng-repeat="course in courses"></stu-btn>
+        <div class="col-xs-12" ng-transclude>
+            <stu-btn ng-repeat="course in courses" ng-if="!showSignedList"></stu-btn>
+            <stu-signed-list ng-if="showSignedList"></stu-signed-list>
         </div>
     </div>
 </div>

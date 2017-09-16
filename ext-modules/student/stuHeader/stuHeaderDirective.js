@@ -11,12 +11,16 @@ angular.module("stuMain")
                     scope.user = $rootScope.user;
                     scope.loadAllAttHistoryCnt(scope.user.stuno);
 
+                // scope.loadAllSignedRecord = function () {
+                //     $location.path("/stuSignedList");
+                // };
                 scope.loadAllSignedRecord = function () {
-                    $location.path("/stuSignedList");
-                };
+                    scope.showSignedList = true;
+                }
 
                 scope.toMainPage = function () {
-                    $location.path("/stuMain");
+                    // $location.path("/stuMain");
+                    scope.showSignedList = false;
                 };
 
                 /*

@@ -12,25 +12,7 @@ angular.module("stuMain")
 
             return time.getTime();
         }
-        
-        $scope.updateSignCnt = function (stuno,status) {
-            $http({
-                method:"GET",
-                url:"http://localhost/v1/stu/signCnt/"+stuno+"/"+status
-            }).then(function (resp) {
-                updateSignCntInTitle(resp.data.result[0]);
-            })
-        }
 
-        function updateSignCntInTitle(info) {
-            // console.log($scope);
-            $scope.$parent.$applyAsync(function() {
-                $scope.$parent.absentcnt = info.absentcnt;
-                $scope.$parent.normalcnt = info.normalcnt;
-                $scope.$parent.latecnt = info.latecnt;
-                $scope.$parent.totlecnt = info.absentcnt+info.normalcnt+info.latecnt;
-            });
-        }
         // console.log($scope);
 
         $scope.addSigninfo = function(info) {

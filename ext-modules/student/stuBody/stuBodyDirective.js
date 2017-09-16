@@ -5,8 +5,8 @@ angular.module("stuMain")
 
         return {
             restrict:"AE",
-            require:"^stuMain",
             controller:"stuBodyCtrl",
+            require:"^stuMain",
             templateUrl:"ext-modules/student/stuBody/stuBodyTemplate.html",
             replace:true,
             link:function (scope,el,attrs,ctrl) {
@@ -80,7 +80,7 @@ angular.module("stuMain")
                         var password = prompt("请输入签到密码：");
                         if(password===scope.course.password){
                             // console.log(scope.$parent);
-                            scope.updateSignCnt($rootScope.user.stuno,scope.signStatus);
+                            ctrl.updateSignCnt($rootScope.user.stuno,scope.signStatus);
                             scope.signStatus = "已签到";
                             scope.signMark = "(正常)  签到时间 "+signtime;
                             scope.status = 1;                  //1正常签到 -1缺勤  2迟到
@@ -90,7 +90,7 @@ angular.module("stuMain")
                         var password = prompt("请输入签到密码：");
                         if(password===scope.course.password){
                             // console.log(scope.$parent);
-                            scope.updateSignCnt($rootScope.user.stuno,scope.signStatus);
+                            ctrl.updateSignCnt($rootScope.user.stuno,scope.signStatus);
                             scope.signStatus = "已签到";
                             scope.signMark = "(迟到)  签到时间 "+signtime;
                             scope.status = 2;

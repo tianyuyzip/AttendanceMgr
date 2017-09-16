@@ -1,7 +1,7 @@
 <div>
-    <div class="col-xs-12">
-        <stu-header></stu-header>
-    </div>
+    <!--<div class="col-xs-12">-->
+        <!--<stu-header></stu-header>-->
+    <!--</div>-->
     <div class="col-xs-12">
         <div class="title-left col-xs-12 left">所有签到记录</div>
         <div class="form-area">
@@ -13,11 +13,12 @@
                     <input type="text" class="form-control" id="qryCourseName" ng-model="qryCourseName" placeholder="课程名称">
                 </div>
                 <div class="col-xs-1">
-                    <button class="btn btn-default" ng-click="combineSearch()">查询<span class="glyphicon glyphicon-search"></span></button>
+                    <button class="btn btn-default">查询<span class="glyphicon glyphicon-search"></span></button>
                 </div>
             </div>
         </div>
         <div class="col-xs-12 table-area">
+            <div ng-if="hasList">
             <table class=" table table-striped table-hover table-condensed">
                 <thead>
                 <tr>
@@ -40,19 +41,23 @@
                 </tr>
                 </tbody>
             </table>
-            <div class="text-right" ng-controller="stuSignedListCtrl">
+            <div class="text-right">
                 <span>当前：第 {{pageNo}} 页</span>&nbsp;&nbsp;&nbsp;
-                <!--<span>共 {{totalPage}} 页</span>&nbsp;&nbsp;&nbsp;-->
-                <!--<span ng-if="!isFirst">-->
-                <!--<span class="tea-stumgr-page" ng-click="loadPage(initUrl,1);">[首页]</span>&nbsp;&nbsp;&nbsp;-->
-                <!--<span class="tea-stumgr-page" ng-click="toPageByPageNo(pageNo-1);">[上一页]</span>&nbsp;&nbsp;&nbsp;-->
-            <!--</span>-->
-                <!--<span ng-if="!isLast">-->
-                <!--<span class="tea-stumgr-page" ng-click="loadPage(linkObj.next,pageNo+1);">[下一页]</span>&nbsp;&nbsp;&nbsp;-->
-                <!--<span class="tea-stumgr-page" ng-click="loadPage(linkObj.last,totalPage);">[末页]</span>&nbsp;&nbsp;&nbsp;-->
-            <!--</span>-->
-                <!--<input type="number" ng-model="pageNum" style="width: 50px;">&nbsp;&nbsp;&nbsp;-->
-                <!--<button class="btn btn-primary btn-xs" ng-click="toPageByPageNo(pageNum);">跳转</button>-->
+                <span>共 {{totalPage}} 页</span>&nbsp;&nbsp;&nbsp;
+                <span ng-if="!isFirst">
+                    <span class="page-br" ng-click="toFirst();">[首页]</span>&nbsp;&nbsp;&nbsp;
+                    <span class="page-br" ng-click="toLoadPage(pageNo-1);">[上一页]</span>&nbsp;&nbsp;&nbsp;
+                </span>
+                <span ng-if="!isLast">
+                    <span class="page-br" ng-click="toLoadPage(pageNo+1);">[下一页]</span>&nbsp;&nbsp;&nbsp;
+                    <span class="page-br" ng-click="toLast();">[末页]</span>&nbsp;&nbsp;&nbsp;
+                </span>
+                <input type="number" ng-model="pageNum" style="width: 50px;">&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-default btn-xs" ng-click="jumpPage(pageNum);">跳转</button>
+            </div>
+            </div>
+            <div ng-if="!hasList" class="text-center">
+                <span style="color: red;font-size: 15px;">抱歉没有找到您所查询的信息！</span>
             </div>
         </div>
     </div>

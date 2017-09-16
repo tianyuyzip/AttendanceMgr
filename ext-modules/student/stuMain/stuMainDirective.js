@@ -4,9 +4,9 @@ angular.module("stuMain")
     .directive("stuMain",function () {
        return {
            restrict:"AE",
-           scope:{},
            templateUrl:"ext-modules/student/stuMain/stuMainTemplate.html",
            replace:true,
-           controller:"stuMainCtrl"
+           controller:"stuMainCtrl",
+           transclude:true
        }
     });

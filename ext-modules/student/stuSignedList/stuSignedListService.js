@@ -20,8 +20,27 @@ angular.module("stuMain")
             return promise;
         }
 
+        function loadScopedSignedRecord(stuno,pageNo,pageSize) {
+
+            var deferred=$q.defer();
+            var promise=deferred.promise;
+            $http({
+                method: "GET",
+                url: "http://localhost/v1/stu/signinfo/" + stuno+"/"+pageNo+"/"+pageSize
+            }).then(function (resp) {
+                    deferred.resolve(resp.data.result);
+                },
+                function (data) {
+                    deferred.reject();
+                });
+            // console.log(promise);
+            return promise;
+
+        }
+
         return {
-            loadAllSignedRecord:loadAllSignedRecord
+            loadAllSignedRecord:loadAllSignedRecord,
+            loadScopedSignedRecord:loadScopedSignedRecord
         }
 
     });

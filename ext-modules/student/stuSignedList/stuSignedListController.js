@@ -1,10 +1,9 @@
 "use strict";
 
 angular.module("stuMain")
-    .controller("stuSignedListCtrl",["$rootScope","$scope","$location","$http",
-        function ($rootScope,$location,$scope,$http) {
+    .controller("stuSignCtrl",["$rootScope","$scope","$location","$http","$q","stuSignedListService","$filter",
+        function ($rootScope,$location,$scope,$http,$q,stuSignedListService,$filter) {
 
-            $scope.pageNo = 1;
-            $scope.isFirst = true;
+
 
     }]);

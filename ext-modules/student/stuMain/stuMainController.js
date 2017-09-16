@@ -13,28 +13,31 @@ angular.module("stuMain")
              }
         })();
 
-        // /*
-        // * 加载历史签到次数信息
-        // * */
-        // function loadAllAttHistoryCnt (stuno) {
-        //     $http({
-        //         method:"GET",
-        //         url:"http://localhost/v1/stu/signin/"+stuno
-        //     }).then(
-        //         function (resp) {
-        //             var record = resp.data.result[0];
-        //             $scope.normalcnt = record.normalcnt;
-        //             $scope.latecnt = record.latecnt;
-        //             $scope.absentcnt = record.absentcnt;
-        //             $scope.totlecnt = record.normalcnt+record.latecnt+record.absentcnt;
-        //         }
-        //     )
-        // }
+        $scope.showSignedList = false;
+        // console.log($scope);
+        this.getTotleCnt = function () {
+            return $scope.totlecnt;
+        }
 
-        // $scope.loadAllSignedRecord = function () {
-        //     $location.path("/stuSignedList");
-        // };
-        
+            this.updateSignCnt = function (stuno,status) {
+                $http({
+                    method:"GET",
+                    url:"http://localhost/v1/stu/signCnt/"+stuno+"/"+status
+                }).then(function (resp) {
+                    updateSignCntInTitle(resp.data.result[0]);
+                })
+            }
+
+            function updateSignCntInTitle(info) {
+                console.log($scope);
+                $scope.$applyAsync(function() {
+                    $scope.absentcnt = info.absentcnt;
+                    $scope.normalcnt = info.normalcnt;
+                    $scope.latecnt = info.latecnt;
+                    $scope.totlecnt = info.absentcnt+info.normalcnt+info.latecnt;
+                });
+            }
+
         /**
          * 加载当天所有课程信息
          * */
@@ -55,19 +58,4 @@ angular.module("stuMain")
                 );
         }
 
-        // /*
-        // * 退出系统
-        // * */
-        // $scope.quit = function () {
-        //     if(!$rootScope.user)
-        //         return;
-        //     else {
-        //         if($window.confirm("尊敬的  "+$rootScope.user.stuname+"  用户，您确定要退出系统吗？"))
-        //         {
-        //             $rootScope.user = null;
-        //             $location.path("/login");
-        //         }else
-        //             return;
-        //     }
-        // }
     }]);

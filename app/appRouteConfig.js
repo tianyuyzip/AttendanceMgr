@@ -21,7 +21,14 @@ angular.module("attApp")
                    config:{
                        template:"<stu-course-signed-list></stu-course-signed-list>"
                    }
+               },
+               {
+                   url:"/stuMessage",
+                   config:{
+                       template:"<stu-message></stu-message>"
+                   }
                }
+
            ];
 
            routes.forEach(function(route){

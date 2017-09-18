@@ -1,0 +1,39 @@
+<div class="panel panel-info" style="height: 350px;width: 600px;margin: 100px auto">
+    <div class="panel-heading">
+        <h3 class="panel-title">修改密码</h3>
+    </div>
+    <div class="panel-body">
+        <div class="text-center">
+            <h4>学员:{{stuname}}</h4>
+            <span id="errorMessage" class="errorMessage"></span>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-xs-3 col-md-4 control-label">请输入原密码：</label>
+                    <div class="col-xs-9 col-md-8">
+                        <input type="text" ng-model="originPassword" class="form-control" placeholder="原密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 col-md-4 control-label">请输入新密码：</label>
+                    <div class="col-xs-9 col-md-8">
+                        <input type="text" ng-model="newPassword" class="form-control" placeholder="新密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 col-md-4 control-label">确认新密码：</label>
+                    <div class="col-xs-9 col-md-8">
+                        <input type="text" ng-model="verify" class="form-control" placeholder="新密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-2">
+                        <button type="button" class="btn btn-default" ng-click="back()">返回主页</button>
+                    </div>
+                    <div class="col-xs-2 col-xs-offset-8">
+                        <button type="button" class="btn btn-default" ng-click="updatePassword()">确认修改</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

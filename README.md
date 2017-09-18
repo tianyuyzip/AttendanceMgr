@@ -5,27 +5,37 @@
 使用mongodb文档型数据库存储系统数据
 ### 实体说明：
 - 学生：用于登录学生端，进行课程签到，保存学生个人信息
-- 教师：用于登录教师端，进行学生、课程、考勤、选课等信息的管理，保存教师个人信息
 - 课程：保存课程信息
 - 签到次数：保存学生各种签到状态的总次数
 - 签到记录：学生签到课程生成一条签到记录，保存学生签到状态、签到时间，以及课程部分信息
 
 ### 文档说明：
-- stuinfo:  
-{
-    "_id" : "s001",
+- course{
+    "_id" : ObjectId("59b5eb76da23a6a6fda8c805"),
+    "courseno" : "c002",
+    "coursename" : "计算机网络",
+    "teaname" : "刘明",
+    "begintime" : "10:00",
+    "endtime" : "12:00",
+    "date" : "9-16",
+    "password" : "k3k68d"
+}
+- signCnt{
+    "_id" : ObjectId("59b4a5a4da23a6a6fda8c802"),
     "stuno" : "s001",
     "stuname" : "王海",
-    "sex" : "M",
-    "picname" : "s001.jpg",
-    "password" : "s001",
-    "state" : 1
-}  
-- teainfo:  
-{
-    "_id" : "t001",
-    "teano" : "t001",
-    "teaname" : "刘明",
-    "sex" : "M",
-    "password" : "t001"
+    "normalcnt" : 6,
+    "latecnt" : 9,
+    "absentcnt" : 0.0
+}
+- signinfo{
+    "_id" : ObjectId("59bcb4512adce02a60435481"),
+    "stuno" : "s001",
+    "stuname" : "王海",
+    "courseno" : "c006",
+    "coursename" : "大学英语",
+    "signdate" : "9-16",
+    "signtime" : "13:19",
+    "begintime" : "12:30",
+    "status" : 2
 }

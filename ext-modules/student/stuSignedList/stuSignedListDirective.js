@@ -77,13 +77,17 @@ angular.module("stuMain")
                 * */
                 scope.toFirst = function () {
                     scope.pageNo = 1;
-                    scope.isFirst=true;
+                    if(scope.pageNo===1){
+                        scope.isLast=false;
+                        scope.isFirst=true;
+                    }
                     stuSignedListService.loadScopedSignedRecord($rootScope.user.stuno,1,scope.pageSize).then(
                         function(result){
                             records = result;
                             scope.recordList = result;
                         }
                     )
+                    console.log("toFirst"+scope.isFirst);
                 };
 
                 var pageSize = null;
@@ -101,10 +105,12 @@ angular.module("stuMain")
                     }
                     if(pageNo==1){
                         scope.isFirst=true;
+                        scope.isLast=false;
                     }
                     if(pageNo===scope.totalPage){
                         scope.pageNo = pageNo;
                         scope.isLast = true;
+                        scope.isFirst = false;
                         pageSize = scope.totlecnt - (pageNo-1)*scope.pageSize;
                         stuSignedListService.loadScopedSignedRecord($rootScope.user.stuno,pageNo,pageSize).then(
                             function(result){
@@ -114,6 +120,8 @@ angular.module("stuMain")
                         )
                     }else{
                         scope.pageNo = pageNo;
+                        scope.isFirst=false;
+                        scope.isLast=false;
                         stuSignedListService.loadScopedSignedRecord($rootScope.user.stuno,pageNo,scope.pageSize).then(
                             function(result){
                                 records = result;
@@ -130,20 +138,27 @@ angular.module("stuMain")
                 scope.toLast = function () {
                     scope.pageNo = scope.totalPage;
                     scope.isLast = true;
+                    scope.isFirst= false;
                     stuSignedListService.loadScopedSignedRecord($rootScope.user.stuno,scope.pageNo,scope.pageSize).then(
                         function(result){
                             records = result;
                             scope.recordList = result;
                         }
                     )
+
+                    console.log("toLast"+scope.isFirst);
                 };
-                
+
+                /**
+                 * 跳转到指定页码
+                * */
                 scope.jumpPage = function (pageNo) {
                     if(pageNo<1 || pageNo>scope.totalPage){
                         alert("请输入【1-"+scope.totalPage+"】有效页号。");
                     }else if(pageNo==scope.totalPage){
                         scope.pageNo = pageNo;
                         scope.isLast = true;
+                        scope.isFirst = false;
                         pageSize = scope.totlecnt - (pageNo-1)*scope.pageSize;
                         stuSignedListService.loadScopedSignedRecord($rootScope.user.stuno,pageNo,pageSize).then(
                             function(result){

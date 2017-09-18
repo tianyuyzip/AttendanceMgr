@@ -1,7 +1,7 @@
 "use strict"
 
 angular.module("stuMain")
-    .controller("stuBodyCtrl",["$scope","$http",function ($scope,$http) {
+    .controller("stuBodyCtrl",["$scope","$http","$location",function ($scope,$http,$location) {
         /**
          * 通过xx：xx字符串获得时间毫秒
          * */
@@ -51,5 +51,11 @@ angular.module("stuMain")
                 }
             )
         };
+
+        $scope.showSignedListPage = function () {
+            $scope.$applyAsync(function () {
+                $location.path("/stuCourseSignedList");
+            })
+        }
 
     }]);

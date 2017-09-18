@@ -29,7 +29,7 @@ angular.module("stuMain")
             }
 
             function updateSignCntInTitle(info) {
-                console.log($scope);
+                // console.log($scope);
                 $scope.$applyAsync(function() {
                     $scope.absentcnt = info.absentcnt;
                     $scope.normalcnt = info.normalcnt;

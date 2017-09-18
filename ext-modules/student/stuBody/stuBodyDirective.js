@@ -1,7 +1,8 @@
 "use strict";
 
 angular.module("stuMain")
-    .directive("stuBtn",["$rootScope","$window",function ($rootScope,$window) {
+    .directive("stuBtn",["$rootScope","$window","$location","stuCourseSignedService",
+        function ($rootScope,$window,$location,stuCourseSignedService) {
 
         return {
             restrict:"AE",
@@ -14,14 +15,14 @@ angular.module("stuMain")
                 var now = new Date();
 
                 /**
-                 * 预设置课程状态
-                 * */
-                setRecordStatus(now);
-
-                /**
                  * 设置按钮状态，如果之前有签到过的则显示已签到
                  * */
                 scope.getSignedinfo($rootScope.user.stuno,scope.course.courseno,scope.course.date,scope.course.begintime);
+
+                /**
+                 * 预设置课程状态
+                 * */
+                setRecordStatus(now);
 
                 /**
                  * 预设置课程状态
@@ -71,10 +72,11 @@ angular.module("stuMain")
                     var signtime = hours+":"+minute;
 
                     if(scope.signStatus==="已签到"){
-                        $window.alert("请勿重复签到！");
+                        stuCourseSignedService.courseService.set(scope.course);
+                        scope.showSignedListPage();
                     }
                     if(scope.signStatus==="未开始"){
-                        $window.alert("课程签到未开始，请稍后再试！");
+                        alert("课程签到还未开始。");
                     }
                     if(scope.signStatus==="待签到"){
                         var password = prompt("请输入签到密码：");

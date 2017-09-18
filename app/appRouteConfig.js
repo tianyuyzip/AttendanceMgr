@@ -17,9 +17,9 @@ angular.module("attApp")
                    }
                },
                {
-                   url:"/stuSignedList",
+                   url:"/stuCourseSignedList",
                    config:{
-                       template:"<stu-signed-list></stu-signed-list>"
+                       template:"<stu-course-signed-list></stu-course-signed-list>"
                    }
                }
            ];

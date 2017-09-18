@@ -1,23 +1,22 @@
-<div>
-    <!--<div class="col-xs-12">-->
-        <!--<stu-header></stu-header>-->
-    <!--</div>-->
-    <div class="col-xs-12">
-        <div class="title-left col-xs-12 left">所有签到记录</div>
-        <div class="form-area">
-            <div class="col-xs-12 searchForm">
-                <div class="col-xs-4">
-                    <input type="text" data-toggle="tooltip" data-placement="top" title="请输入xx-xx日期格式" class="form-control" id="qryDate" ng-model="qryDate" placeholder="日期">
-                </div>
-                <div class="col-xs-6">
-                    <input type="text" class="form-control" id="qryCourseName" ng-model="qryCourseName" placeholder="课程名称">
-                </div>
-                <div class="col-xs-1">
-                    <button class="btn btn-default">查询<span class="glyphicon glyphicon-search"></span></button>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 table-area">
+<div class="col-xs-10 col-xs-offset-2">
+    <ol class="breadcrumb">
+        <li><span ng-click="toMainPage()">Home</span></li>
+        <li class="active">所有课程签到记录</li>
+    </ol>
+     <div class="form-area">
+         <div class="col-xs-12 searchForm">
+             <div class="col-xs-4">
+                 <input type="text" data-toggle="tooltip" data-placement="top" title="请输入xx-xx日期格式" class="form-control" id="qryDate" ng-model="qryDate" placeholder="日期">
+             </div>
+             <div class="col-xs-6">
+                 <input type="text" class="form-control" id="qryCourseName" ng-model="qryCourseName" placeholder="课程名称">
+             </div>
+             <div class="col-xs-1">
+                 <button class="btn btn-default">查询<span class="glyphicon glyphicon-search"></span></button>
+             </div>
+         </div>
+     </div>
+     <div class="col-xs-12 table-area">
             <div ng-if="hasList">
             <table class=" table table-striped table-hover table-condensed">
                 <thead>
@@ -41,24 +40,30 @@
                 </tr>
                 </tbody>
             </table>
-            <div class="text-right">
-                <span>当前：第 {{pageNo}} 页</span>&nbsp;&nbsp;&nbsp;
-                <span>共 {{totalPage}} 页</span>&nbsp;&nbsp;&nbsp;
-                <span ng-if="!isFirst">
-                    <span class="page-br" ng-click="toFirst();">[首页]</span>&nbsp;&nbsp;&nbsp;
-                    <span class="page-br" ng-click="toLoadPage(pageNo-1);">[上一页]</span>&nbsp;&nbsp;&nbsp;
-                </span>
-                <span ng-if="!isLast">
-                    <span class="page-br" ng-click="toLoadPage(pageNo+1);">[下一页]</span>&nbsp;&nbsp;&nbsp;
-                    <span class="page-br" ng-click="toLast();">[末页]</span>&nbsp;&nbsp;&nbsp;
-                </span>
-                <input type="number" ng-model="pageNum" style="width: 50px;">&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-default btn-xs" ng-click="jumpPage(pageNum);">跳转</button>
-            </div>
+                <nav aria-label="...">
+                    <ul class="pager">
+                        <li> <span>当前：第 {{pageNo}} 页</span></li>
+                        <li><span>共 {{totalPage}} 页</span></li>
+                        <li>
+                            <span ng-if="!isFirst">
+                                <span class="page-br" ng-click="toFirst();">[首页]</span>&nbsp;&nbsp;&nbsp;
+                                <span class="page-br" ng-click="toLoadPage(pageNo-1);">[上一页]</span>&nbsp;&nbsp;&nbsp;
+                            </span>
+                        </li>
+                        <li>
+                            <span ng-if="!isLast">
+                             <span class="page-br" ng-click="toLoadPage(pageNo+1);">[下一页]</span>&nbsp;&nbsp;&nbsp;
+                              <span class="page-br" ng-click="toLast();">[末页]</span>&nbsp;&nbsp;&nbsp;
+                             </span>
+                        </li>
+                        <li><input type="number" ng-model="pageNum" style="width: 50px;"></li>
+                        <li><button class="btn btn-default btn-xs" ng-click="jumpPage(pageNum);">跳转</button></li>
+                        <li></li>
+                    </ul>
+                </nav>
             </div>
             <div ng-if="!hasList" class="text-center">
                 <span style="color: red;font-size: 15px;">抱歉没有找到您所查询的信息！</span>
             </div>
-        </div>
-    </div>
+     </div>
 </div>

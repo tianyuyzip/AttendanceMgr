@@ -9,7 +9,7 @@ angular.module("stuMain")
             templateUrl:"ext-modules/student/stuHeader/stuHeaderTemplate.html",
             link:function (scope,el,attrs,ctrl) {
                     scope.user = $rootScope.user;
-                    scope.loadAllAttHistoryCnt(scope.user.stuno);
+                    scope.loadAllAttHistoryCnt(scope.user.stuno,scope.user.stuname);
 
                 // scope.loadAllSignedRecord = function () {
                 //     $location.path("/stuSignedList");

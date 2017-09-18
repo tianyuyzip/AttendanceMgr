@@ -1,23 +1,25 @@
-<div class="text-center">
-    <div class="col-sm-12 col-md-4">
-        <span  ng-click="toMainPage();">
-        <img src="images/brsc-logo.gif" class="logo-icon">
-        </span>
-        <div class="title-area">
-            <label class="user-label">欢迎同学:
-                 <span>{{user.stuname}}</span>
-            </label>
+<div class="text-center panel panel-primary">
+    <div class="panel-body">
+        <div class="col-sm-12 col-md-4">
+            <span  ng-click="toMainPage();">
+                <img src="images/timg.jpg" class="logo-icon">
+            </span>
+            <button class="btn btn-primary" type="button">
+                 Welcome <span class="badge">{{user.stuname}}</span>
+            </button>
+        </div>
+     <div class="head-label">
+        <div class="col-sm-12 col-md-6">
+            <button class="btn btn-primary" type="button" ng-click="loadAllSignedRecord();">
+                历史签到 <span class="badge">{{totlecnt}}</span>
+            </button>
+            <a href="#">正常签到: <span class="badge">{{normalcnt}}</span></a>
+            <a href="#">迟到: <span class="badge">{{latecnt}}</span></a>
+            <a href="#">缺勤: <span class="badge">{{absentcnt}}</span></a>
+        </div>
+        <div class=" col-sm-12 col-md-2">
+            <button class="btn btn-primary" ng-click="quit();">退出登陆</button>
         </div>
     </div>
-    <div class="col-sm-12 col-md-6 sign-cnt">
-        <button class="btn btn-primary" type="button" ng-click="loadAllSignedRecord();">
-            历史签到 <span class="badge">{{totlecnt}}</span>
-        </button>
-        <a href="#">正常签到: <span class="badge">{{normalcnt}}</span></a>
-        <a href="#">迟到: <span class="badge">{{latecnt}}</span></a>
-        <a href="#">缺勤: <span class="badge">{{absentcnt}}</span></a>
-    </div>
-    <div class=" col-sm-12 col-md-2 quit">
-        <button class="btn btn-primary" ng-click="quit();">退出登陆</button>
     </div>
 </div>

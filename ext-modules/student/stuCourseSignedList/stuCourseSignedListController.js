@@ -1,30 +1,49 @@
 "use strict";
 
 angular.module("stuMain")
-    .controller("stuCourseSignedCtrl",["$scope","$rootScope","$location","stuCourseSignedService",
-        function ($scope,$rootScope,$location,stuCourseSignedService) {
+    .controller("stuCourseSignedCtrl",["$scope","$rootScope","$location","$http","stuCourseSignedService",
+        function ($scope,$rootScope,$location,$http,stuCourseSignedService) {
 
         $scope.hasList = true;
+        var records = new Array();
 
         (function () {
             // console.log($rootScope.user);
             if(!$rootScope.user) {
                 $location.path("/login");
             }else {
+                    var courseinfo = stuCourseSignedService.courseService.get();
+                    $scope.coursename = courseinfo.coursename;
+                    $scope.courseno = courseinfo.courseno;
+                    $scope.begintime = courseinfo.begintime;
+                    $scope.signdate = new Date().getMonth()+1+"-"+new Date().getDate();
 
-                var courseinfo = stuCourseSignedService.courseService.get();
-                console.log(courseinfo);
-                var courseno = courseinfo.courseno;
-                var begintime = courseinfo.begintime;
-                var signdate = new Date().getMonth()+1+"-"+new Date().getDate();
-                stuCourseSignedService.loadCourseSignedInfo(courseno,signdate,begintime).then(
+                stuCourseSignedService.loadCourseSignedInfo($scope.courseno,$scope.signdate,$scope.begintime).then(
                     function(result){
-                        console.log(result);
-                        $scope.recordList = result;
+                        $scope.$applyAsync(function () {
+                            records = result;
+                            $scope.signcnt=records.length;
+                            if(records.length<1){
+                                $scope.hasList = false;
+                            }
+                            var cnt = 0;
+                            records.forEach(function (record) {
+                                if(record.status==2){
+                                    cnt ++;
+                                }
+                            })
+                            $scope.latecnt = cnt;
+                            $scope.recordList = result;
+                        })
+
                     }
                 );
-
-                console.log($scope.recordList);
             }
         })();
+        $scope.lateScore = 2;
+
+        $scope.back = function () {
+            $location.path("/stuMain");
+        }
+
     }]);

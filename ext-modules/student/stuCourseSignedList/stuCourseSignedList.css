@@ -1,0 +1,11 @@
+.to-main{
+    position: relative;
+    float: right;
+}
+
+.message{
+    position: relative;
+    font-size: 17px;
+    color: lightcoral;
+    float: left;
+}

@@ -29,19 +29,25 @@ angular.module("stuMain")
         courseService.set = _set;
         courseService.get = _get;
 
-        function loadCourseSignedInfo(courseno,signdate,begintime) {
-            console.log(courseno+signdate+begintime);
+        function loadCourseSignedInfo(courseno,signdate,begintime){
+
             var deferred=$q.defer();
             var promise=deferred.promise;
             $http({
-                method: "GET",
-                url: "http://localhost/v1/stu/signinfo/" + courseno+"/"+signdate+"/"+begintime
-            }).then(function (resp) {
+                        method:"POST",
+                        url:"http://localhost/v1/stu/signinfo/course",
+                        params:{
+                            courseno:courseno,
+                            signdate:signdate,
+                            begintime:begintime
+                        }
+                    }).then(function (resp) {
                     deferred.resolve(resp.data.result);
                 },
                 function (data) {
                     deferred.reject();
                 });
+            // console.log(promise);
             return promise;
         }
 

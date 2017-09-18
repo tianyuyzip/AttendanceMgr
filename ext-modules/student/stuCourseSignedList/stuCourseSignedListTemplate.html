@@ -1,19 +1,13 @@
-<div>
-    <div class="col-xs-12">
-        <div class="title-left col-xs-12 left">{{coursename}} 本次课程签到记录</div>
-        <!--<div class="form-area">-->
-            <!--<div class="col-xs-12 searchForm">-->
-                <!--<div class="col-xs-4">-->
-                    <!--<input type="text" data-toggle="tooltip" data-placement="top" title="请输入xx-xx日期格式" class="form-control" id="qryDate" ng-model="qryDate" placeholder="日期">-->
-                <!--</div>-->
-                <!--<div class="col-xs-6">-->
-                    <!--<input type="text" class="form-control" id="qryCourseName" ng-model="qryCourseName" placeholder="课程名称">-->
-                <!--</div>-->
-                <!--<div class="col-xs-1">-->
-                    <!--<button class="btn btn-default">查询<span class="glyphicon glyphicon-search"></span></button>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+<div class="col-xs-10 col-xs-offset-1">
+    <ol class="breadcrumb">
+        <li><span ng-click="toMainPage()">Home</span></li>
+        <li class="active">{{coursename}} 课程签到记录</li>
+    </ol>
+    <div>
+        <p class="message">本课程共 {{signcnt}} 条签到记录，其中迟到 {{latecnt}} 人，根据课程安排，迟到扣 {{lateScore}} 分</p>
+        <span class="btn btn-default btn-sm to-main" ng-click="back()">返回</span>
+    </div>
+
         <div class="col-xs-12 table-area">
             <div ng-if="hasList">
                 <table class=" table table-striped table-hover table-condensed">

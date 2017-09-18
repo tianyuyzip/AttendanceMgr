@@ -23,6 +23,10 @@ angular.module("stuMain")
                     scope.showSignedList = false;
                 };
 
+                scope.toUpdatePage = function () {
+                    $location.path("/stuMessage");
+                };
+
                 /*
                 * 退出系统
                 * */

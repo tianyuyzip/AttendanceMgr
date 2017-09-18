@@ -75,6 +75,10 @@ angular.module("stuMain")
                         stuCourseSignedService.courseService.set(scope.course);
                         scope.showSignedListPage();
                     }
+                    if(scope.signStatus==="缺勤"){
+                        stuCourseSignedService.courseService.set(scope.course);
+                        scope.showSignedListPage();
+                    }
                     if(scope.signStatus==="未开始"){
                         alert("课程签到还未开始。");
                     }

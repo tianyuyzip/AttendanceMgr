@@ -3,9 +3,12 @@
 angular.module("stuMain")
     .factory("stuSignedListService",function ($http,$q) {
 
+        /**
+         * 从数据库加载学生所有签到记录
+         * */
         function loadAllSignedRecord(stuno){
 
-            var deferred=$q.defer();
+            var deferred=$q.defer();                //同步
             var promise=deferred.promise;
             $http({
                 method: "GET",
@@ -20,6 +23,12 @@ angular.module("stuMain")
             return promise;
         }
 
+        /**
+         * 分页加载此学生签到记录
+         * @stuno: 学生学号
+         * @pageNo: 加载的页号
+         * @pageSize: 每页记录数
+         * */
         function loadScopedSignedRecord(stuno,pageNo,pageSize) {
 
             var deferred=$q.defer();

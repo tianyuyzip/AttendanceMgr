@@ -16,9 +16,10 @@ angular.module("stuMain")
                 scope.pageNo = 1;       //当前第几页
                 scope.pageSize = 6;     //每页显示多少条记录
                 scope.isFirst = true;  //是否是第一页
-                scope.totlecnt = ctrl.getTotleCnt();
+                scope.totlecnt = ctrl.getTotleCnt();      //获取总记录数
+                //设置总页数
                 scope.totalPage = ctrl.getTotleCnt()%scope.pageSize==0?ctrl.getTotleCnt()/scope.pageSize:parseInt(ctrl.getTotleCnt()/scope.pageSize)+1;
-                scope.hasList = true;
+                scope.hasList = true;       //用于ng-if判断列表是否有记录
 
                 //如果没登陆 去登陆界面
                 (function () {
@@ -27,6 +28,10 @@ angular.module("stuMain")
                         $location.path("/login");
                     } else {
                         // console.log(scope);
+                        /**
+                         * stuSignedService ：自定义服务
+                         * loadsScopedSignedRecord: 分页加载记录
+                         * */
                         stuSignedListService.loadScopedSignedRecord($rootScope.user.stuno,scope.pageNo,scope.pageSize).then(
                             function(result){
                                 // console.log(result);             //加载历史签到记录
@@ -34,11 +39,12 @@ angular.module("stuMain")
                                 scope.recordList = result;
                             }
                         )
-                        $("[data-toggle='tooltip']").tooltip();
+                        $("[data-toggle='tooltip']").tooltip();       //设置提示信息
                     }
                 })();
 
-                var patt = /^[0-9]{1,2}-[0-9]{2}$/;
+                var patt = /^[0-9]{1,2}-[0-9]{2}$/;               //日期查询条件正则表达式
+                                                                   //xx-xx
 
                 /**
                  * 组合条件查询

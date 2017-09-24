@@ -59,7 +59,7 @@ angular.module("stuMain")
                     var minute = "";
 
                     var signdate = now.getMonth()+1+"-"+now.getDate();
-                    if(now.getHours()<10){
+                    if(now.getHours()<10){                         //时间是一位数字，自动在前面添加一个0，使时间格式保持一致
                         hours = "0"+now.getHours();
                     }else{
                         hours = now.getHours();
@@ -73,11 +73,11 @@ angular.module("stuMain")
 
                     if(scope.signStatus==="已签到"){
                         stuCourseSignedService.courseService.set(scope.course);
-                        scope.showSignedListPage();
+                        scope.showSignedListPage();            //跳转到课程签到列表
                     }
                     if(scope.signStatus==="缺勤"){
                         stuCourseSignedService.courseService.set(scope.course);
-                        scope.showSignedListPage();
+                        scope.showSignedListPage();              //跳转到课程签到列表
                     }
                     if(scope.signStatus==="未开始"){
                         alert("课程签到还未开始。");
@@ -88,8 +88,8 @@ angular.module("stuMain")
                             // console.log(scope.$parent);
                             ctrl.updateSignCnt($rootScope.user.stuno,scope.signStatus);
                             scope.signStatus = "已签到";
-                            scope.signMark = "(正常)  签到时间 "+signtime;
-                            scope.status = 1;                  //1正常签到 -1缺勤  2迟到
+                            scope.signMark = "(正常)  签到时间 "+signtime;         //签到后btn上的提示信息
+                            scope.status = 1;                        //1正常签到 -1缺勤  2迟到，控制按钮样式
                         }
                     }
                     if(scope.signStatus==="迟到"){
@@ -103,7 +103,7 @@ angular.module("stuMain")
                         }
                     }
                     if(scope.status===1||scope.status===-1||scope.status===2) {     //判断是否有签到动作
-                        var signinfo = {
+                        var signinfo = {                                           //设置签到记录信息
                             stuno: $rootScope.user.stuno,
                             stuname: $rootScope.user.stuname,
                             courseno: scope.course.courseno,

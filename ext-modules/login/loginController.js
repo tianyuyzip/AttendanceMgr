@@ -4,9 +4,13 @@ angular.module("login")
        .controller("loginControl",["$scope","$location","$rootScope","$http"
            ,function ($scope,$location,$rootScope,$http) {
 
-            $scope.isLogined = false;
-            $scope.errormsg = "";
+            $scope.isLogined = false;  //判断是否登录
+            $scope.errormsg = "";      //出错提示信息
 
+               /**
+                * 登陆检测
+                * 密码不能为空，密码是否正确
+               * */
             $scope.loginCheck = function(){
                 var username = $scope.username;
                 var password = $scope.password;
@@ -20,7 +24,7 @@ angular.module("login")
                    $scope.errormsg="密码不能为空";
                    return;
                }
-               if(identify==="1"){
+               if(identify==="1"){                  //如果是学生 则去读数据库并判断密码是否正确
 
                     $http({
                         method:"GET",

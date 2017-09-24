@@ -8,9 +8,13 @@ angular.module("stuMain")
            controller:"stuMessageCtrl",
            templateUrl:"ext-modules/student/stuMessage/stuMessageTemplate.html",
            link:function (scope,el,attrs,ctrl) {
+
+               /**
+                * 点击修改按钮，检查输入信息
+                * */
                scope.updatePassword = function () {
-                   console.log(scope.originPassword);
-                   console.log($rootScope.user.password);
+  /*                 console.log(scope.originPassword);
+                   console.log($rootScope.user.password);*/
                    if(scope.originPassword!==$rootScope.user.password){
                        $(el).find("#errorMessage").html("原始密码不正确，重新输入") ;
                        return;
@@ -26,7 +30,7 @@ angular.module("stuMain")
                        $(el).find("#errorMessage").html("与原始密码一致。");
                        return
                    }else{
-                        scope.setNewPassword($rootScope.user.stuno,scope.verify);
+                        scope.setNewPassword($rootScope.user.stuno,scope.verify);    //修改密码
                    }
                }
            }

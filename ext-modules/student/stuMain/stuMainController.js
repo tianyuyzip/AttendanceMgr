@@ -9,26 +9,37 @@ angular.module("stuMain")
             if(!$rootScope.user) {
                 $location.path("/login");
              }else {
-                loadTodayCourses();
+                loadTodayCourses();            //加载当天所有课程信息，读取系统时间
              }
         })();
 
-        $scope.showSignedList = false;
-        // console.log($scope);
+        $scope.showSignedList = false;       //用于ng-if的判断，如果要显示用户所有签到界面，设置为true，否则默认显示签到按钮
+
+        /**
+         * 获取总得签到记录数,提供给stuSignedList引用
+         * */
         this.getTotleCnt = function () {
             return $scope.totlecnt;
         }
 
-            this.updateSignCnt = function (stuno,status) {
+        /**
+         * @stuno：用来查找签到记录的学生学号
+         * @status：签到的状态，通过后台自动对应的签到状态记录数+1
+         * 返回此学生的签到记录数
+         * */
+        this.updateSignCnt = function (stuno,status) {
                 $http({
                     method:"GET",
                     url:"http://localhost/v1/stu/signCnt/"+stuno+"/"+status
                 }).then(function (resp) {
                     updateSignCntInTitle(resp.data.result[0]);
                 })
-            }
+        };
 
-            function updateSignCntInTitle(info) {
+        /**
+         * 更新头部的签到记录数
+         * */
+        function updateSignCntInTitle(info) {
                 // console.log($scope);
                 $scope.$applyAsync(function() {
                     $scope.absentcnt = info.absentcnt;
@@ -36,7 +47,7 @@ angular.module("stuMain")
                     $scope.latecnt = info.latecnt;
                     $scope.totlecnt = info.absentcnt+info.normalcnt+info.latecnt;
                 });
-            }
+        };
 
         /**
          * 加载当天所有课程信息

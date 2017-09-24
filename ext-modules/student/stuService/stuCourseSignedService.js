@@ -29,10 +29,16 @@ angular.module("stuMain")
         courseService.set = _set;
         courseService.get = _get;
 
+        /**
+         * 读取数据库，加载该课程的全部签到记录
+         * @courseno：课程号
+         * @signdate：签到日期
+         * @begintime：课程开始时间
+         * */
         function loadCourseSignedInfo(courseno,signdate,begintime){
 
             var deferred=$q.defer();
-            var promise=deferred.promise;
+            var promise=deferred.promise;             //使AJAX异步加载变为同步，防止取不到值
             $http({
                         method:"POST",
                         url:"http://localhost/v1/stu/signinfo/course",

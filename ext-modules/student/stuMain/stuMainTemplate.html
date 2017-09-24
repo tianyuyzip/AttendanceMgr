@@ -2,7 +2,7 @@
     <div class="text-center">
         <stu-header></stu-header>
     </div>
-    <div class="col-xs-10" ng-transclude>
+    <div class="col-xs-12" ng-transclude>
         <stu-btn ng-repeat="course in courses" ng-if="!showSignedList"></stu-btn>
         <stu-signed-list ng-if="showSignedList"></stu-signed-list>
     </div>
